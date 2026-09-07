@@ -400,7 +400,7 @@ The model retained missing phase values as `Not reported` rather than silently e
 
 
 
-!\[Trial Overview](screenshots/Overview.png)
+![Trial Overview](screenshots/Overview.png)
 
 
 
@@ -408,7 +408,7 @@ The model retained missing phase values as `Not reported` rather than silently e
 
 
 
-!\[Portfolio and Delivery Insights](screenshots/Portfolio%20and%20Delivery%20Insights.png)
+![Portfolio and Delivery Insights](screenshots/Portfolio%20and%20Delivery%20Insights.png)
 
 
 
@@ -416,7 +416,7 @@ The model retained missing phase values as `Not reported` rather than silently e
 
 
 
-!\[Geographic and Reporting Governance](screenshots/Geographic%20%26%20Reporting%20Governance.png)
+![Geographic and Reporting Governance](screenshots/Geographic%20%26%20Reporting%20Governance.png)
 
 ## How to view the project
 
