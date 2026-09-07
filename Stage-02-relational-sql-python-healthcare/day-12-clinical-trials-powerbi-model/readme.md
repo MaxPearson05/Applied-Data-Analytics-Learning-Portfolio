@@ -392,11 +392,11 @@ The model retained missing phase values as `Not reported` rather than silently e
 
 
 
-\## Dashboard screenshots
+## Dashboard screenshots
 
 
 
-\### Trial Overview
+### Trial Overview
 
 
 
@@ -404,7 +404,7 @@ The model retained missing phase values as `Not reported` rather than silently e
 
 
 
-\### Portfolio and Delivery Insights
+### Portfolio and Delivery Insights
 
 
 
@@ -412,7 +412,7 @@ The model retained missing phase values as `Not reported` rather than silently e
 
 
 
-\### Geographic and Reporting Governance
+### Geographic and Reporting Governance
 
 
 
