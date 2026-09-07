@@ -1,8 +1,8 @@
-\# DAX Measures — Clinical Trials Intelligence
+# DAX Measures — Clinical Trials Intelligence
 
 
 
-\## Purpose
+## Purpose
 
 
 
@@ -14,11 +14,11 @@ The report contains three pages:
 
 
 
-1\. Trial Overview
+1. Trial Overview
 
-2\. Portfolio \& Delivery Insights
+2. Portfolio & Delivery Insights
 
-3\. Geographic \& Reporting Governance
+3. Geographic & Reporting Governance
 
 
 
@@ -26,11 +26,11 @@ The model uses:
 
 
 
-\- `FactTrials` as the trial-level fact table
+- `FactTrials` as the trial-level fact table
 
-\- `BridgeTrialCountry` as the country participation bridge table
+- `BridgeTrialCountry` as the country participation bridge table
 
-\- `FactTrials\[nct\_id]` as the unique trial identifier
+- `FactTrials[nct_id]` as the unique trial identifier
 
 
 
@@ -38,21 +38,21 @@ Measures use `DISTINCTCOUNT` to avoid duplicate trial counting.
 
 
 
-\---
+---
 
 
 
-\## Page 1 — Trial Overview
+## Page 1 — Trial Overview
 
 
 
-\### Total Trials
+### Total Trials
 
 
 
-&#x20;   Total Trials =
+       Total Trials =
 
-&#x20;   DISTINCTCOUNT(FactTrials\[nct\_id])
+       DISTINCTCOUNT(FactTrials[nct_id])
 
 
 
@@ -60,19 +60,19 @@ Counts the total number of unique trials in the curated cohort.
 
 
 
-\### Completed Trials
+### Completed Trials
 
 
 
-&#x20;   Completed Trials =
+       Completed Trials =
 
-&#x20;   CALCULATE(
+       CALCULATE(
 
-&#x20;       DISTINCTCOUNT(FactTrials\[nct\_id]),
+           DISTINCTCOUNT(FactTrials[nct_id]),
 
-&#x20;       FactTrials\[overall\_status] = "COMPLETED"
+           FactTrials[overall_status] = "COMPLETED"
 
-&#x20;   )
+       )
 
 
 
@@ -80,19 +80,19 @@ Counts unique completed trials.
 
 
 
-\### Terminated Trials
+### Terminated Trials
 
 
 
-&#x20;   Terminated Trials =
+       Terminated Trials =
 
-&#x20;   CALCULATE(
+       CALCULATE(
 
-&#x20;       DISTINCTCOUNT(FactTrials\[nct\_id]),
+           DISTINCTCOUNT(FactTrials[nct_id]),
 
-&#x20;       FactTrials\[overall\_status] = "TERMINATED"
+           FactTrials[overall_status] = "TERMINATED"
 
-&#x20;   )
+       )
 
 
 
@@ -100,19 +100,19 @@ Counts unique terminated trials.
 
 
 
-\### Terminated Share
+### Terminated Share
 
 
 
-&#x20;   Terminated Share =
+       Terminated Share =
 
-&#x20;   DIVIDE(
+       DIVIDE(
 
-&#x20;       \[Terminated Trials],
+           [Terminated Trials],
 
-&#x20;       \[Total Trials]
+           [Total Trials]
 
-&#x20;   )
+       )
 
 
 
@@ -120,13 +120,13 @@ Calculates terminated trials as a proportion of all trials.
 
 
 
-\### Trials by Country
+### Trials by Country
 
 
 
-&#x20;   Trials by Country =
+       Trials by Country =
 
-&#x20;   DISTINCTCOUNT(BridgeTrialCountry\[nct\_id])
+       DISTINCTCOUNT(BridgeTrialCountry[nct_id])
 
 
 
@@ -138,21 +138,21 @@ Because multinational trials can participate in multiple countries, country tota
 
 
 
-\---
+---
 
 
 
-\## Page 2 — Portfolio \& Delivery Insights
+## Page 2 — Portfolio & Delivery Insights
 
 
 
-\### Median Enrollment
+### Median Enrollment
 
 
 
-&#x20;   Median Enrollment =
+       Median Enrollment =
 
-&#x20;   MEDIAN(FactTrials\[enrollment])
+       MEDIAN(FactTrials[enrollment])
 
 
 
@@ -160,21 +160,21 @@ Calculates median planned trial enrollment.
 
 
 
-\### 75th Percentile Enrollment
+### 75th Percentile Enrollment
 
 
 
-&#x20;   75th Percentile Enrollment =
+       75th Percentile Enrollment =
 
-&#x20;   PERCENTILEX.INC(
+       PERCENTILEX.INC(
 
-&#x20;       FactTrials,
+           FactTrials,
 
-&#x20;       FactTrials\[enrollment],
+           FactTrials[enrollment],
 
-&#x20;       0.75
+           0.75
 
-&#x20;   )
+       )
 
 
 
@@ -182,13 +182,13 @@ Calculates the 75th percentile of planned trial enrollment.
 
 
 
-\### Median Sites
+### Median Sites
 
 
 
-&#x20;   Median Sites =
+       Median Sites =
 
-&#x20;   MEDIAN(FactTrials\[site\_count])
+       MEDIAN(FactTrials[site_count])
 
 
 
@@ -196,13 +196,13 @@ Calculates the median number of trial sites.
 
 
 
-\### Median Countries
+### Median Countries
 
 
 
-&#x20;   Median Countries =
+       Median Countries =
 
-&#x20;   MEDIAN(FactTrials\[country\_count])
+       MEDIAN(FactTrials[country_count])
 
 
 
@@ -210,19 +210,19 @@ Calculates the median number of participating countries per trial.
 
 
 
-\### Median Duration Months
+### Median Duration Months
 
 
 
-&#x20;   Median Duration Months =
+       Median Duration Months =
 
-&#x20;   DIVIDE(
+       DIVIDE(
 
-&#x20;       MEDIAN(FactTrials\[duration\_days]),
+           MEDIAN(FactTrials[duration_days]),
 
-&#x20;       30.4375
+           30.4375
 
-&#x20;   )
+       )
 
 
 
@@ -230,29 +230,29 @@ Converts median trial duration from days into months.
 
 
 
-\### Final Outcome Trials
+### Final Outcome Trials
 
 
 
-&#x20;   Final Outcome Trials =
+       Final Outcome Trials =
 
-&#x20;   CALCULATE(
+       CALCULATE(
 
-&#x20;       DISTINCTCOUNT(FactTrials\[nct\_id]),
+           DISTINCTCOUNT(FactTrials[nct_id]),
 
-&#x20;       FactTrials\[overall\_status]
+           FactTrials[overall_status]
 
-&#x20;           IN {
+               IN {
 
-&#x20;               "COMPLETED",
+                   "COMPLETED",
 
-&#x20;               "TERMINATED",
+                   "TERMINATED",
 
-&#x20;               "WITHDRAWN"
+                   "WITHDRAWN"
 
-&#x20;           }
+               }
 
-&#x20;   )
+       )
 
 
 
@@ -260,19 +260,19 @@ Counts trials with a final recorded outcome status.
 
 
 
-\### Discontinuation Rate
+### Discontinuation Rate
 
 
 
-&#x20;   Discontinuation Rate =
+       Discontinuation Rate =
 
-&#x20;   DIVIDE(
+       DIVIDE(
 
-&#x20;       \[Terminated Trials],
+           [Terminated Trials],
 
-&#x20;       \[Final Outcome Trials]
+           [Final Outcome Trials]
 
-&#x20;   )
+       )
 
 
 
@@ -280,27 +280,27 @@ Calculates terminated trials as a proportion of trials with a final outcome stat
 
 
 
-\---
+---
 
 
 
-\## Page 3 — Geographic \& Reporting Governance
+## Page 3 — Geographic & Reporting Governance
 
 
 
-\### UK Trials
+### UK Trials
 
 
 
-&#x20;   UK Trials =
+       UK Trials =
 
-&#x20;   CALCULATE(
+       CALCULATE(
 
-&#x20;       DISTINCTCOUNT(FactTrials\[nct\_id]),
+           DISTINCTCOUNT(FactTrials[nct_id]),
 
-&#x20;       FactTrials\[uk\_participation] = TRUE()
+           FactTrials[uk_participation] = TRUE()
 
-&#x20;   )
+       )
 
 
 
@@ -308,19 +308,19 @@ Counts unique trials with recorded UK participation.
 
 
 
-\### Known Geography Trials
+### Known Geography Trials
 
 
 
-&#x20;   Known Geography Trials =
+       Known Geography Trials =
 
-&#x20;   CALCULATE(
+       CALCULATE(
 
-&#x20;       DISTINCTCOUNT(FactTrials\[nct\_id]),
+           DISTINCTCOUNT(FactTrials[nct_id]),
 
-&#x20;       FactTrials\[country\_count] > 0
+           FactTrials[country_count] > 0
 
-&#x20;   )
+       )
 
 
 
@@ -328,19 +328,19 @@ Counts trials with at least one recorded participating country.
 
 
 
-\### UK Participation Share
+### UK Participation Share
 
 
 
-&#x20;   UK Participation Share =
+       UK Participation Share =
 
-&#x20;   DIVIDE(
+       DIVIDE(
 
-&#x20;       \[UK Trials],
+           [UK Trials],
 
-&#x20;       \[Known Geography Trials]
+           [Known Geography Trials]
 
-&#x20;   )
+       )
 
 
 
@@ -348,19 +348,19 @@ Calculates the UK participation share among trials with known geography.
 
 
 
-\### Mature Eligible Trials
+### Mature Eligible Trials
 
 
 
-&#x20;   Mature Eligible Trials =
+       Mature Eligible Trials =
 
-&#x20;   CALCULATE(
+       CALCULATE(
 
-&#x20;       DISTINCTCOUNT(FactTrials\[nct\_id]),
+           DISTINCTCOUNT(FactTrials[nct_id]),
 
-&#x20;       FactTrials\[mature\_results\_eligible] = TRUE()
+           FactTrials[mature_results_eligible] = TRUE()
 
-&#x20;   )
+       )
 
 
 
@@ -368,21 +368,21 @@ Counts trials eligible for results-posting analysis based on the maturity-window
 
 
 
-\### Posted Results Trials
+### Posted Results Trials
 
 
 
-&#x20;   Posted Results Trials =
+       Posted Results Trials =
 
-&#x20;   CALCULATE(
+       CALCULATE(
 
-&#x20;       DISTINCTCOUNT(FactTrials\[nct\_id]),
+           DISTINCTCOUNT(FactTrials[nct_id]),
 
-&#x20;       FactTrials\[mature\_results\_eligible] = TRUE(),
+           FactTrials[mature_results_eligible] = TRUE(),
 
-&#x20;       FactTrials\[results\_posted] = TRUE()
+           FactTrials[results_posted] = TRUE()
 
-&#x20;   )
+       )
 
 
 
@@ -390,19 +390,19 @@ Counts mature eligible trials with recorded posted results.
 
 
 
-\### Results Coverage
+### Results Coverage
 
 
 
-&#x20;   Results Coverage =
+       Results Coverage =
 
-&#x20;   DIVIDE(
+       DIVIDE(
 
-&#x20;       \[Posted Results Trials],
+           [Posted Results Trials],
 
-&#x20;       \[Mature Eligible Trials]
+           [Mature Eligible Trials]
 
-&#x20;   )
+       )
 
 
 
@@ -410,13 +410,13 @@ Calculates the proportion of mature eligible trials with posted results.
 
 
 
-\### Not Posted Results
+### Not Posted Results
 
 
 
-&#x20;   Not Posted Results =
+       Not Posted Results =
 
-&#x20;   \[Mature Eligible Trials] - \[Posted Results Trials]
+       [Mature Eligible Trials] - [Posted Results Trials]
 
 
 
@@ -428,11 +428,11 @@ This measure is used with `Posted Results Trials` in the 100% stacked results-co
 
 
 
-\---
+---
 
 
 
-\## Display Measures Used During Formatting
+## Display Measures Used During Formatting
 
 
 
@@ -440,35 +440,35 @@ These measures were used temporarily to control KPI card rounding.
 
 
 
-\### UK Trials Display
+### UK Trials Display
 
 
 
-&#x20;   UK Trials Display =
+       UK Trials Display =
 
-&#x20;   FORMAT(
+       FORMAT(
 
-&#x20;       \[UK Trials],
+           [UK Trials],
 
-&#x20;       "#,##0"
+           "#,##0"
 
-&#x20;   )
-
-
-
-\### Mature Eligible Display
+       )
 
 
 
-&#x20;   Mature Eligible Display =
+### Mature Eligible Display
 
-&#x20;   FORMAT(
 
-&#x20;       \[Mature Eligible Trials],
 
-&#x20;       "#,##0"
+       Mature Eligible Display =
 
-&#x20;   )
+       FORMAT(
+
+           [Mature Eligible Trials],
+
+           "#,##0"
+
+       )
 
 
 
@@ -476,11 +476,11 @@ The final cards use the original numeric measures, with display units set to `No
 
 
 
-\---
+---
 
 
 
-\## Overall Results
+## Overall Results
 
 
 
@@ -510,27 +510,27 @@ The final cards use the original numeric measures, with display units set to `No
 
 
 
-\---
+---
 
 
 
-\## Interpretation Notes
+## Interpretation Notes
 
 
 
-\- Trial-level measures use `FactTrials\[nct\_id]` to avoid duplicate counting.
+- Trial-level measures use `FactTrials[nct_id]` to avoid duplicate counting.
 
-\- Country measures use `BridgeTrialCountry`, so multinational trials can appear in multiple country totals.
+- Country measures use `BridgeTrialCountry`, so multinational trials can appear in multiple country totals.
 
-\- Median measures are non-additive. Matrix totals represent the overall median, not the sum or average of phase values.
+- Median measures are non-additive. Matrix totals represent the overall median, not the sum or average of phase values.
 
-\- The discontinuation-rate total is recalculated using the overall numerator and denominator.
+- The discontinuation-rate total is recalculated using the overall numerator and denominator.
 
-\- The 100% stacked results chart shows the share of eligible trials, not raw trial counts.
+- The 100% stacked results chart shows the share of eligible trials, not raw trial counts.
 
-\- Percentages are formatted to one decimal place.
+- Percentages are formatted to one decimal place.
 
-\- Enrollment, site and country counts are formatted as whole numbers.
+- Enrollment, site and country counts are formatted as whole numbers.
 
-\- Duration is formatted to one decimal place in months.
+- Duration is formatted to one decimal place in months.
 

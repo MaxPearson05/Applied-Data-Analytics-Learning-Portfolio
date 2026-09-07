@@ -44,12 +44,12 @@ The PostgreSQL import produced sales and profit totals $0.03 above the original 
 
 ## Evidence
 
-* [Dimension setup and validation](sql/00_setup-dimensions.sql)
-* [Join practice](sql/01_join-practice.sql)
-* [CTEs and subqueries](sql/02_ctes-and-subqueries.sql)
+* [Dimension setup and validation](sql/00_setup_dimensions.sql)
+* [Join practice](sql/01_join_practice.sql)
+* [CTEs and subqueries](sql/02_ctes_and_subqueries.sql)
 * [Join reconciliation](sql/03_reconciliation.sql)
 
-![Clean three-table join reconciliation](screenshots/01_join-reconciliation.png)
+![Clean three-table join reconciliation](screenshots/01_join_reconciliation.png)
 
 ## Limitations
 

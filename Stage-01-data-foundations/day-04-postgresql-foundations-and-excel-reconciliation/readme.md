@@ -68,7 +68,7 @@ I identified the mismatch from PostgreSQL’s error details, corrected the sourc
 
 ### Cross-tool reconciliation
 
-![Excel and PostgreSQL reconciliation](./screenshots/03_excel_sql_reconciliation.png)
+![Excel and PostgreSQL reconciliation](./screenshots/03_postgre-excel_reconciliation.png)
 
 ### Database validation
 

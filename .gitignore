@@ -185,6 +185,7 @@ cython_debug/
 
 # Keep reproducibility manifests
 !**/data/raw/*manifest*.json
+**/data/raw/*.ndjson
 
 # Ignore temporary learning samples
 **/data/raw/*sample_trials*.csv

@@ -14,7 +14,7 @@ The analysis focuses on:
 - Global activity with a UK strategic lens
 - Primary analytical grain: one row per clinical trial (`nct_id`)
 
-The locked cohort contained **46,905 unique trials**.
+The AACT snapshot used in this stage contained **46,905 unique trials**. The final Power BI refresh is documented separately in Day 12.
 
 ---
 
@@ -176,13 +176,21 @@ Free-text discontinuation categories use transparent keyword rules, with approxi
 Results-posting analysis measures public registry visibility rather than legal or regulatory compliance.
 
 ---
+## Development extract
 
-## Next Validation Step
+A controlled 200-study NDJSON extract is included for pipeline development and reproducibility.
 
-Cross-platform validation will be completed next using:
+It contains public ClinicalTrials.gov-derived data and is not the full production cohort. The larger raw AACT extracts are intentionally not included in the repository.
 
-- BigQuery nested JSON and `UNNEST` reconciliation
-- Independent pandas validation of selected SQL metrics
+The final analytical outputs are stored in `data/processed/`.
 
-These checks will provide an additional validation layer against the PostgreSQL analysis.
+---
+
+## Further validation and extension
+
+The repository includes supporting BigQuery and pandas work for extending validation beyond the PostgreSQL warehouse.
+
+The final Power BI dashboard was built from the curated PostgreSQL outputs and checked through structural validation, relationship validation and dashboard filter testing.
+
+A future extension would formalise a complete independent BigQuery and pandas reconciliation of selected portfolio metrics.
 

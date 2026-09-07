@@ -8,7 +8,7 @@ The analysis demonstrates data preparation, query design, table merging, reconci
 
 ## Deliverable
 
-[Download the completed Excel workbook](./Max_Pearson_Power_Query_Financial_Dashboard.xlsx)
+[Download the completed Excel workbook](./data/Power_Query_and_Excel_Dashboard.xlsx)
 
 ## Power Query workflow
 
@@ -113,24 +113,28 @@ These observations are descriptive and do not establish that any country, produc
 
 ## Screenshots
 
+screenshots/01-excel-dashboard.png
+screenshots/02-pq-qa-results.png
+screenshots/03-power-query-applied-steps.png
+
 ### Interactive dashboard
 
-![Interactive Excel dashboard](./screenshots/excel-dashboard.png)
+![Interactive Excel dashboard](./screenshots/01-excel-dashboard.png)
 
 ### Power Query applied steps
 
-![Power Query applied steps](./screenshots/power-query-applied-steps.png)
+![Power Query applied steps](./screenshots/03-power-query-applied-steps.png)
 
 ### Reconciliation and QA
 
-![Power Query QA results](./screenshots/pq-qa-results.png)
+![Power Query QA results](./screenshots/02-pq-qa-results.png)
 
 ## Repository contents
 
 ```text
 day-03-power-query-and-excel-dashboard/
 ├── README.md
-├── Max_Pearson_Power_Query_Financial_Dashboard.xlsx
+├── Power_Query_Financial_Dashboard.xlsx
 ├── excel-dashboard.png
 ├── power-query-applied-steps.png
 └── pq-qa-results.png
